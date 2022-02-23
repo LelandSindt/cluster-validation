@@ -315,7 +315,7 @@ fi
 
 if [[ $runiperf == "true" ]]; then
    # Print the measured bandwidth (string TBD)
-   for host in "${half2[@]}"; do ssh "$host" 'grep -ih -e ^ *-iperf.log'; done
+   for host in "${half2[@]}"; do [ "z" == "z${host}" ] && break; ssh "$host" 'grep -ih -e ^ *-iperf.log'; done
    echo
    echo "Theoretical Max: 1GbE=125MB/s, 10GbE=1250MB/s"
    echo "Expect 90-94% best case, 1125-1175 MB/sec on all pairs for 10GbE"
